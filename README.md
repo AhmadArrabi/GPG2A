@@ -4,8 +4,6 @@ Official code repository for the paper "[Cross-View Meets Diffusion: Aerial Imag
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
-![SVG Image](Assets/model.SVG)
-
 ## Prerequisites
 - accelerate
 - diffusers
