@@ -5,12 +5,14 @@ Official code repository for the paper "[Cross-View Meets Diffusion: Aerial Imag
 ![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
 ## Prerequisites
+### Training & Testing
 - accelerate
 - diffusers
 - Pytorch >= 2.1.2
 - torchvision >= 0.16.2
 - pillow
 - tqdm
+### Evaluation (Additionaly)
 - scikit-image
 - opencv
 - lpips
@@ -42,7 +44,7 @@ bash ./Stage_I/train.sh
 ```
 Note that you can customize the training experiment using the arguments provided in `./Stage_I/train.py` by simply passing them to `./Stage_I/train.sh`
 
-This script will save checkpoints at every epoch trained in `./OUTPUT_DIR/checkpoints`
+This script will save checkpoints at every epoch in `./OUTPUT_DIR/checkpoints`
 
 ### Stage II (Diffusion Aerial Synthesis)
 To train stage II (Diffusion Aerial Synthesis) navigate to the root directory and run the following script
@@ -50,6 +52,7 @@ To train stage II (Diffusion Aerial Synthesis) navigate to the root directory an
 bash ./Stage_II/train.sh
 ```
 Note that you need to have the checkpoints of stage I saved in the correct location (as shown in the above tree).
+
 You can customize the training experiment using the arguments provided in `./Stage_II/train.py` by simply passing them to `./Stage_II/train.sh`, for example:
 ```
 --text_type="dynamic"
@@ -80,12 +83,14 @@ To test stage II (Diffusion Aerial Synthesis) navigate to the root directory and
 ```
 bash ./Stage_II/test.sh
 ```
-Note that you need to have the checkpoints of stage I and II saved in the correct location (as shown in the above tree).
+Note that you need to have the checkpoints of stages I and II saved in the correct location (as shown in the above tree).
 
 This script saves all generated images of the test set in the specified output directory (`./log_imgs_test` by default)
 
 ## Evaluations
-This section covers evaluating the generated images from GPG2A, so it assumes already having a directory of generated images (from the test set). All evaluation scripts are in `./Evaluation/`
+This section covers evaluating the generated images from GPG2A, so it assumes already having a directory of generated images (from the test set). 
+
+All evaluation scripts are in `./Evaluation/`
 
 ### Pre-trained SAFA model
 Please download the pretrained SAFA model [here](https://drive.google.com/file/d/1z6BB_CUQxDyN4y7LUbxhJcoh75f9MW5N/view?usp=sharing) and extract to the same directory.
