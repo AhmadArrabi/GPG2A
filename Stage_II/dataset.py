@@ -21,7 +21,7 @@ class VIGOR_v2(torch.utils.data.Dataset):
         - cities: list of cities to include
     """
     def __init__(self, 
-                 root ='./data/VIGOR', 
+                 root ='./data/VIGORv2', 
                  mode="train",
                  split="samearea",
                  text_type="constant",

@@ -22,7 +22,7 @@ class VIGOR_v2(torch.utils.data.Dataset):
         - layout_mode" choose ["RGB", "discrete", "one_hot"]
     """
     def __init__(self, 
-                 root ='./data/VIGOR', 
+                 root ='./data/VIGORv2', 
                  mode="train",
                  split="samearea",
                  FOV=360,
