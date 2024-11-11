@@ -1,4 +1,4 @@
-# GPG2A
+# GPG2A (Geometric Preserving Ground-to-Aerial image synthesis)
 Official code repository for the paper "[Cross-View Meets Diffusion: Aerial Image Synthesis with Geometry and Text Guidance](https://arxiv.org/abs/2408.04224)" presented at WACV, 2025.
 
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
@@ -11,6 +11,9 @@ Official code repository for the paper "[Cross-View Meets Diffusion: Aerial Imag
 - torchvision >= 0.16.2
 - pillow
 - tqdm
+- scikit-image
+- opencv
+- lpips
 
 ## Dataset
 VIGORv2 can be downloaded from the following link.
@@ -80,6 +83,32 @@ bash ./Stage_II/test.sh
 Note that you need to have the checkpoints of stage I and II saved in the correct location (as shown in the above tree).
 
 This script saves all generated images of the test set in the specified output directory (`./log_imgs_test` by default)
+
+## Evaluations
+This section covers evaluating the generated images from GPG2A, so it assumes already having a directory of generated images (from the test set). All evaluation scripts are in `./Evaluation/`
+
+### Pre-trained SAFA model
+Please download the pretrained SAFA model [here](https://drive.google.com/file/d/1z6BB_CUQxDyN4y7LUbxhJcoh75f9MW5N/view?usp=sharing) and extract to the same directory.
+
+### Generate aerial images
+Please follow the training and testing tutorial above to generate aerial images for evaluation with correct naming and directory.
+
+### $Sim_c$ and $Sim_s$
+1. Please replace the `GROUND_TRUTH_IMAGES_DIRECTORY` in line 92 of `eval_SAFA.py` with your downloaded VIGORv2 dataset directory.
+2. Please add the generated images in line `test_dict`(line 88 in `eval_SAFA.py`) with a preferred experiment name.
+3. To calculate $Sim_c$ and $Sim_s$, please run `python eval_SAFA.py --model_path SAFA_PRETREAINED_MODEL_PATH`
+
+### FID-SAFA
+1. Please replace `PRE-TRAINED_SAFA_WEIGHTS` in line 15 of `eval_FID.py` with your download SAFA pretrained weights directory (i.e. `./GPG2A_eval_SAFA_model/epoch_100.pth`).
+2. Please replace the `GROUND_TRUTH_IMAGES_DIRECTORY` in line 34 of `eval_FID.py` with your downloaded VIGORv2 dataset directory.
+3. Please add the generated images in line `test_dict`(line 27 in `eval_FID.py`) with a preferred experiment name.
+4. Running `python eval_FID.py`.
+
+### LPIPS, SSIM, PSNR
+1. Please replace the `GROUND_TRUTH_IMAGES_DIRECTORY` in line 22 of `test_lpips.py` with your downloaded VIGORv2 dataset directory.
+2. Please add the generated images in line `test_dict`(line 17 in `test_lpips.py`) with a preferred experiment name.
+3. Please run
+```python test_lpips.py```.
 
 
 
