@@ -164,5 +164,6 @@ cython_debug/
 
 data/
 checkpoints/
+GPG2A_eval_SAFA_model/
 =======
 >>>>>>> 40ec8aac75ab296f1e80aad96cae5868e64377dd
