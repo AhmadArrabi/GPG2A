@@ -8,6 +8,7 @@ import argparse
 import json
 from SAFA_vgg import SAFA_vgg
 import json
+import glob
 
 args_do_not_overide = ['data_dir', 'verbose', 'dataset']
 def ReadConfig(path):
@@ -30,6 +31,9 @@ def GetBestModel(path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_path', type=str, help='path to model weights')
+    parser.add_argument('--experiment_name', type=str, help='a preferred experiment name')
+    parser.add_argument('--image_path', type=str, help='path to generated images')
+    parser.add_argument('--gt_path', type=str, help='path to generated images')
 
     opt = parser.parse_args()
 
@@ -85,16 +89,17 @@ if __name__ == "__main__":
     model.eval()
 
 
-    test_dict = {
-    "EXPERIMENT_NAME":"GENERATED_IMAGES_DIRECTORY",
-    }
+    test_dict = {opt.experiment_name : opt.image_path}
 
-    ref_dir = "GROUND_TRUTH_IMAGES_DIRECTORY"
+
+
+    ref_dir = opt.gt_path
 
 
     for name, dirs in test_dict.items():
 
-        num_file = sorted(os.listdir(dirs))
+        # num_file = sorted(os.listdir(dirs))
+        num_file = sorted(glob.glob(os.path.join(opt.image_path, "*", "*.png")))
 
         geodtr_same_scores = []
         geodtr_cross_scores = []
@@ -107,10 +112,14 @@ if __name__ == "__main__":
             for i in tqdm(num_file, disable=False):
                 img_dir = os.path.join(dirs, i)
 
-                city, image_name = i.split("#VAIL#")
-                ref_img_dir = os.path.join(ref_dir, city, "grd_aerial", image_name.replace(".jpg", ".png"))
+                # city, image_name = i.split("#VAIL#")
+                # ref_img_dir = os.path.join(ref_dir, city, "grd_aerial", image_name.replace(".jpg", ".png"))
 
-                ref_grd_dir = os.path.join(ref_dir, city, "grd_aerial", image_name)
+                # ref_grd_dir = os.path.join(ref_dir, city, "grd_aerial", image_name)
+
+                city_name, image_name = i.split("/")[2], i.split("/")[3]
+                ref_img_dir = os.path.join(opt.gt_path, city_name, "grd_aerial", image_name)
+                ref_grd_dir = os.path.join(opt.gt_path, city_name, "panorama", image_name.replace(".png", ".jpg"))
 
 
                 sat_ref = Image.open(ref_img_dir).convert('RGB')

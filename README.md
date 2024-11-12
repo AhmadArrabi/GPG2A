@@ -102,21 +102,31 @@ Please download the pretrained SAFA model [here](https://drive.google.com/file/d
 Please follow the training and testing tutorial above to generate aerial images for evaluation with correct naming and directory.
 
 ### $Sim_c$ and $Sim_s$
-1. Please replace the `GROUND_TRUTH_IMAGES_DIRECTORY` in line 92 of `eval_SAFA.py` with your downloaded VIGORv2 dataset directory.
-2. Please add the generated images in line `test_dict`(line 88 in `eval_SAFA.py`) with a preferred experiment name.
-3. To calculate $Sim_c$ and $Sim_s$, please run `python eval_SAFA.py --model_path SAFA_PRETREAINED_MODEL_PATH`
+To calculate $Sim_c$ and $Sim_s$, please run the command below,
+
+```python eval_SAFA.py --model_path SAFA_PRETREAINED_MODEL_PATH --experiment_name YOUR_PREFERRED_EXPERIMENT_NAME --image_path GENERATED_IMAGE_PATH --gt_path GROUND_TRUTH_IMAGE_PATH```
+
+For example,
+
+```python eval_SAFA.py --model_path ../GPG2A_eval_SAFA_model/ --experiment_name GPG2A_experiment --image_path ../log_imgs_test/ --gt_path ../Data/VIGOR/```
 
 ### FID-SAFA
-1. Please replace `PRE-TRAINED_SAFA_WEIGHTS` in line 15 of `eval_FID.py` with your download SAFA pretrained weights directory (i.e. `./GPG2A_eval_SAFA_model/epoch_100.pth`).
-2. Please replace the `GROUND_TRUTH_IMAGES_DIRECTORY` in line 34 of `eval_FID.py` with your downloaded VIGORv2 dataset directory.
-3. Please add the generated images in line `test_dict`(line 27 in `eval_FID.py`) with a preferred experiment name.
-4. Running `python eval_FID.py`.
+To calculate FID-SAFA, please run the command below,
+
+```python eval_FID.py --model_path SAFA_PRETREAINED_MODEL_PATH --experiment_name YOUR_PREFERRED_EXPERIMENT_NAME --image_path GENERATED_IMAGE_PATH --gt_path GROUND_TRUTH_IMAGE_PATH```
+
+For example,
+
+```python eval_FID.py --model_path ../GPG2A_eval_SAFA_model/ --experiment_name GPG2A_experiment --image_path ../log_imgs_test/ --gt_path ../Data/VIGOR/```
 
 ### LPIPS, SSIM, PSNR
-1. Please replace the `GROUND_TRUTH_IMAGES_DIRECTORY` in line 22 of `test_lpips.py` with your downloaded VIGORv2 dataset directory.
-2. Please add the generated images in line `test_dict`(line 17 in `test_lpips.py`) with a preferred experiment name.
-3. Please run
-```python test_lpips.py```.
+To calculate LPIPS, SSIM, PSNR, please run the command below,
+
+```python test_lpips.py --experiment_name YOUR_PREFERRED_EXPERIMENT_NAME --image_path GENERATED_IMAGE_PATH --gt_path GROUND_TRUTH_IMAGE_PATH```
+
+For example,
+
+```python test_lpips.py --experiment_name GPG2A_experiment --image_path ../log_imgs_test/ --gt_path ../Data/VIGOR/```
 
 
 
