@@ -1,5 +1,5 @@
 export MODEL_DIR="runwayml/stable-diffusion-v1-5" 
-export OUTPUT_DIR="./Test" 
+export OUTPUT_DIR="./Training_log" 
 export BEV_CHECKPOINT="./checkpoints/Stage_I/stage_I.pt"
 
 accelerate launch --multi_gpu ./Stage_II/train.py \
