@@ -20,8 +20,9 @@ Official code repository for the paper "[Cross-View Meets Diffusion: Aerial Imag
 - lpips
 
 ## Dataset
+Please fill out the form provided [here](https://forms.gle/6YeGYBA9DRnkipVk6) to download VIGORv2
+
 ![data](Assets/data.png)
-VIGORv2 can be downloaded from the "[following link](https://forms.gle/6YeGYBA9DRnkipVk6)".
 
 ## Pre-trained Weights
 Our checkpoints can be downloaded from the following link.
