@@ -25,7 +25,7 @@ Please fill out the form provided [here](https://forms.gle/6YeGYBA9DRnkipVk6) to
 ![data](Assets/data.png)
 
 ## Pre-trained Weights
-Our checkpoints can be downloaded from the [following link](TODO: INSERT LINK)
+Our checkpoints can be downloaded from the [following link](https://drive.google.com/file/d/1dvpZ3PfDs-b2EaSw1wsUdtrmP5m-7Hwf/view?usp=sharing)
 
 ## Training
 After downloading VIGORv2 and the pre-trained weights, for the best experience, make sure your repository tree is as follows:
