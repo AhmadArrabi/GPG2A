@@ -137,6 +137,16 @@ For example,
 ```
 python test_lpips.py --experiment_name GPG2A_experiment --image_path ../log_imgs_test/ --gt_path ../Data/VIGOR/
 ```
-
+## Cite us
+```
+@InProceedings{Arrabi_2025_WACV,
+    author    = {Arrabi, Ahmad and Zhang, Xiaohan and Sultani, Waqas and Chen, Chen and Wshah, Safwan},
+    title     = {Cross-View Meets Diffusion: Aerial Image Synthesis with Geometry and Text Guidance},
+    booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {February},
+    year      = {2025},
+    pages     = {5356-5366}
+}
+```
 
 
